@@ -1,0 +1,27 @@
+{
+  "name": "node-js---global-program",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "task1": "node src/HT-1/task1.1.js",
+    "task2": "node src/HT-1/task1.2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahil1504001/Node-JS---Global-Program.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahil1504001/Node-JS---Global-Program/issues"
+  },
+  "homepage": "https://github.com/sahil1504001/Node-JS---Global-Program#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
+  }
+}

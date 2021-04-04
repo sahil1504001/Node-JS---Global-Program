@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Files
+nodejs19-hw1-ex2.txt
