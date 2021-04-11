@@ -9,6 +9,7 @@
     "task1-babel": "nodemon --exec babel-node src/HT-1/task1.1.js",
     "task2-babel": "nodemon --exec babel-node src/HT-1/task1.2.js",
     "lint": "eslint . --fix",
+    "hometask2": "nodemon --exec babel-node src/HT-2/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,6 +38,10 @@
   },
   "dependencies": {
     "babel-node": "^0.0.1-security",
-    "csvtojson": "^2.0.10"
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "cookie-parser": "^1.4.5",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "joi": "^17.4.0"
   }
 }
