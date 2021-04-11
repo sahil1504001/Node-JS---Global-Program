@@ -6,8 +6,8 @@ const { validateSchema } = require('./utils');
 const userSchema = Joi.object().keys({
     id: Joi.number().required(),
     login: Joi.string().required().regex(/^[a-zA-Z ]{3,20}$/),
-    password: Joi.string().required().regex(/^[a-zA-Z0-9]{3,50}$/),
-    age: Joi.number().min(18).max(60).required(),
+    password: Joi.string().required().regex(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{3,50}$/),
+    age: Joi.number().min(4).max(130).required(),
     isDeleted: Joi.boolean().required()
 });
 

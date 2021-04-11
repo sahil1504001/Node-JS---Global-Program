@@ -4,7 +4,8 @@ const errorResponse = (schemaErrors) => {
         return { path, message };
     });
     return {
-        status: 'Failed',
+        status: 400,
+        message: 'Bad Request',
         errors
     };
 };
