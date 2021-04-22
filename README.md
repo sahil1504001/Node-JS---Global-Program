@@ -1,5 +1,11 @@
 # Node-JS---Global-Program
 
+HOME WORK 2
+
+To load postman API calls please use one of below
+1) https://www.getpostman.com/collections/c391a7ce5f8cf58e5928
+2) Use this file src/HT-3/GMP - Task 3.postman_collection.json and do import in postman
+
 HOMEWORK 1
 BASICS. NODEJS FUNDAMENTAL THEORY
 PREREQUISITES:

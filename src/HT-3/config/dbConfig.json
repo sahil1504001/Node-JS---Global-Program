@@ -1,0 +1,10 @@
+{
+    "db": {
+        "host": "queenie.db.elephantsql.com",
+        "port": 5432,
+        "username": "avbkcjrz",
+        "password": "u7LDJgPuVhc9DoSMVevdGmJgJ04L58AC",
+        "database": "avbkcjrz",
+        "dialect": "postgres"
+    }
+}
