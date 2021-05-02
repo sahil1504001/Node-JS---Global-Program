@@ -4,13 +4,7 @@ import { DBConfig } from "../database-access/db.service";
 
 const dbCon = new DBConfig();
 
-type Permission = 'READ' | 'WRITE' | 'DELETE' | 'SHARE' | 'UPLOAD_FILES';
-
-type GroupTypes = {
-    id: string,
-    name: string,
-    permissions: Array<Permission>
-}
+export const PERMISSION_TYPES = DataTypes.ENUM('READ', 'WRITE', 'DELETE', 'SHARE', 'UPLOAD_FILES');
 
 export const Group = dbCon.getDatabase()
 .define('Group', {
@@ -25,7 +19,7 @@ export const Group = dbCon.getDatabase()
         allowNull: false
     },
     permissions: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(PERMISSION_TYPES),
         allowNull: false
     }
 });

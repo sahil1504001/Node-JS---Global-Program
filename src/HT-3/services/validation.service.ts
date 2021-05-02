@@ -56,7 +56,7 @@ export class UserValidator {
 export class GroupValidator {
   private readonly groupSchema = object({
     name: string().required().alphanum().min(5).max(100),
-    permissions: array().required()
+    permissions: array().items(string().valid(...['READ', 'WRITE', 'DELETE', 'SHARE', 'UPLOAD_FILES'])).min(1).unique().required()
   });
 
   private readonly groupIdSchema = object({
