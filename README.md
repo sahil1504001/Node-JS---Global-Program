@@ -1,5 +1,12 @@
 # Node-JS---Global-Program
 
+HOME TASK 4
+
+To load postman API calls please use one of below
+1) https://www.getpostman.com/collections/db2a8bc74dc5b1eaa53e
+2) Use this file 'src/HT-3/GMP - Task 4.postman_collection.json' and do import in postman
+3) do: npm run hometask4
+
 HOME TASK 3
 
 To load postman API calls please use one of below

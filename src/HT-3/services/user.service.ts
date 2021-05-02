@@ -17,7 +17,6 @@ export class UserService {
   }
 
   updateUser(id: string, data: any) {
-    console.log(id, data);
     return User.update(data, {
       where: {id, isDeleted: false},
       returning: true

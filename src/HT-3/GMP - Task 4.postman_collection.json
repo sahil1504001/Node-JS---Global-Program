@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "268e43ea-f609-4c7a-8f4c-bdf2273d2a7d",
+		"name": "GMP - Task 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET GROUPS ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/groups/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET GROUPS BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/groups/923caa45-87e4-4573-833b-d06e04f9cdab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"923caa45-87e4-4573-833b-d06e04f9cdab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE GROUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"DummyName2\",\r\n    \"permissions\": [\"READ\", \"WRITE\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE GROUP",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"DummyNameUpdated\",\r\n    \"permissions\": [\"READ\", \"WRITE\", \"SHARE\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/923caa45-87e4-4573-833b-d06e04f9cdab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"923caa45-87e4-4573-833b-d06e04f9cdab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELTE GROUP",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/1cc0c968-dc12-4825-8fef-1dc84190e0f1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"1cc0c968-dc12-4825-8fef-1dc84190e0f1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

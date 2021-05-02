@@ -11,6 +11,7 @@
     "lint": "eslint . --fix",
     "hometask2": "nodemon --exec babel-node src/HT-2/index.js",
     "hometask3": "nodemon src/HT-3/app.ts",
+    "hometask4": "nodemon src/HT-3/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
