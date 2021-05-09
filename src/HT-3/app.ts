@@ -4,7 +4,7 @@ import { groupRouter } from './routers/group.router';
 import { DbConfig } from './data-access/db.service';
 
 const app: Application = express();
-const PORT = process.env.port || 3022;
+const PORT = process.env.port || 3000;
 DbConfig.initDb();
 
 app.use(express.json());
