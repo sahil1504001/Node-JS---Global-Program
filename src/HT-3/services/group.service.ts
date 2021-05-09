@@ -1,31 +1,60 @@
 import { Group } from '../models/Group.model';
+import { Op } from 'sequelize';
+import { User } from '../models/User.model';
 
 export class GroupService {
 
-    getAllGroups(): Promise<any[]> {
-        return Group.findAll();
-    }
+  getActiveGroups(): Promise<any[]> {
+    return Group.findAll({
+      attributes: ['id', 'name', 'permissions']
+    });
+  }
 
-    createGroup(group: any): Promise<any> {
-        return Group.create(group);
-    }
+  createGroup(data: any): Promise<any> {
+    return Group.create(data);
+  }
 
-    findGroup(id: string): Promise<any> {
-        return Group.findOne({
-            where: { id }
-        })
-    }
+  updateGroup(id: string, data: any) {
+    return Group.update(data, {
+      where: {id},
+      returning: true
+    });
+  }
 
-    updateGroup(id: string, data: any): Promise<any> {
-        return Group.update(data, {
-            where: { id },
-            returning: true
-        });
-    }
+  findGroup(id: string): Promise<any> {
+    return Group.findOne({
+      where: { id },
+      include: {
+        model: User,
+        as: 'users',
+        attributes: ['id', 'login'],
+        required: false,
+        through: {
+          attributes: []
+        }
+      },
+      attributes: ['id', 'name', 'permissions'],
+    });
+  }
 
-    deleteGroup(id: string): Promise<any> {
-        return Group.destroy({
-            where: { id }
-        })
-    }
+  deleteGroup(id: string) {
+    return Group.destroy({
+      where: { id }
+    });
+  }
+
+  getAutoSuggestGroups(name = '', limit = 10, orderBy = 'ASC') {
+    return Group.findAndCountAll({
+      where: {
+        login: {
+          [Op.like]: `%${name}%`
+        }
+      },
+      limit,
+      attributes: ['id', 'name', 'permissions'],
+      order: [
+        ['name', orderBy]
+      ]
+    })
+  }
 }

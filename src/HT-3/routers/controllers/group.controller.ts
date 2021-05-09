@@ -1,52 +1,56 @@
 import { Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-import { UserService } from "../services/user.service";
-import { RESPONSE_CODES } from '../enums/response.enum';
+import { GroupService } from "../../services/group.service";
 
-export class UserController {
-  readonly RESPONSE_CODES = RESPONSE_CODES;
-  private readonly userService = new UserService();
+enum RESPONSE_CODES {
+  BAD_REQUEST = 400,
+  CREATED = 201,
+  NOT_FOUND = 404
+}
+
+export class GroupController {
+  private readonly groupService = new GroupService();
 
   getActiveUsers(req: Request, res: Response) {
-    this.userService.getActiveUsers()
+    this.groupService.getActiveGroups()
       .then(response => res.json(response))
-      .catch(err => res.status(this.RESPONSE_CODES.BAD_REQUEST).json(err));
+      .catch(err => res.status(RESPONSE_CODES.BAD_REQUEST).json(err));
   }
 
   getAutoSuggestUsers(req: Request, res: Response) {
     const { search, limit } = req.query;
-    this.userService.getAutoSuggestUsers(search as string, limit as unknown as number)
+    this.groupService.getAutoSuggestGroups(search as string, limit as unknown as number)
       .then(respone => res.json(respone))
-      .catch(error => res.status(this.RESPONSE_CODES.BAD_REQUEST).json(error));
+      .catch(error => res.status(RESPONSE_CODES.BAD_REQUEST).json(error));
   }
 
   findUser(req: Request, res: Response) {
-    this.userService.findUser(req.params.id)
+    this.groupService.findGroup(req.params.id)
       .then((response) => {
         if (response) {
           res.json(response);
         } else {
-          res.sendStatus(this.RESPONSE_CODES.NOT_FOUND);
+          res.sendStatus(RESPONSE_CODES.NOT_FOUND);
         }
       })
       .catch((err) => res.status(400).json(err));
   }
 
   createUser(req: Request, res: Response) {
-    this.userService.createUser(req.body)
-    .then(response => res.status(this.RESPONSE_CODES.CREATED).json(response))
-    .catch((err: ValidationError) => res.status(400).json(err.errors[0].message));
+    this.groupService.createGroup(req.body)
+    .then(response => res.status(RESPONSE_CODES.CREATED).json(response))
+    .catch((err: ValidationError) => res.status(400).json(err));
   }
 
   updateUser(req: Request, res: Response) {
-    this.userService.updateUser(req.params.id, req.body)
+    this.groupService.updateGroup(req.params.id, req.body)
     .then((response) => {
       if (response[0] > 0) {
         res.json({
           message: `${req.params.id} updated successfully`
         });
       } else {
-        res.sendStatus(this.RESPONSE_CODES.NOT_FOUND);
+        res.sendStatus(RESPONSE_CODES.NOT_FOUND);
       }
     })
     .catch(() => res.status(400).json({
@@ -55,14 +59,14 @@ export class UserController {
   }
 
   deleteUser(req: Request, res: Response) {
-    this.userService.deleteUser(req.params.id)
+    this.groupService.deleteGroup(req.params.id)
     .then((response) => {
-      if (response[0] > 0) {
+      if (response > 0) {
         res.json({
           message: `${req.params.id} deleted successfully`
         });
       } else {
-        res.sendStatus(this.RESPONSE_CODES.NOT_FOUND);
+        res.sendStatus(RESPONSE_CODES.NOT_FOUND);
       }
     })
     .catch(() => res.status(400).json({

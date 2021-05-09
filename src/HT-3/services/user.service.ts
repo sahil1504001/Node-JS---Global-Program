@@ -1,4 +1,5 @@
 import { User } from '../models/User.model';
+import { Group } from '../models/Group.model';
 import { Op } from 'sequelize';
 
 export class UserService {
@@ -25,6 +26,15 @@ export class UserService {
 
   findUser(id: string): Promise<any> {
     return User.findOne({
+      include: {
+        model: Group,
+        as: 'groups',
+        required: false,
+        attributes: ['id', 'name', 'permissions'],
+        through: {
+          attributes: []
+        }
+      },
       where: { id, isDeleted: false },
       attributes: ['id', 'login', 'age'],
     });

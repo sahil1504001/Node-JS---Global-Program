@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { array, number, object, string } from "joi";
+import { number, object, string } from "joi";
 
 export class UserValidator {
   private readonly userSchema = object({
@@ -44,38 +44,6 @@ export class UserValidator {
 
   validateSuggestQueryParams(req: Request, res: Response, next: NextFunction) {
     const validation = this.suggestQuerySchema.validate(req.query);
-
-    if (validation.error && validation.error.isJoi) {
-      res.status(400).json(validation.error.details[0]);
-    } else {
-      next();
-    }
-  }
-}
-
-export class GroupValidator {
-  private readonly groupSchema = object({
-    name: string().required().alphanum().min(5).max(100),
-    permissions: array().items(string().valid(...['READ', 'WRITE', 'DELETE', 'SHARE', 'UPLOAD_FILES'])).min(1).unique().required()
-  });
-
-  private readonly groupIdSchema = object({
-    id: string().required().uuid()
-    .label('ID')
-  });
-
-  validatorGroupRequestPaylaod(req: Request, res: Response, next: NextFunction) {
-    const validation = this.groupSchema.validate(req.body);
-
-    if (validation.error && validation.error.isJoi) {
-      res.status(400).json(validation.error.details[0]);
-    } else {
-      next();
-    }
-  }
-
-  validateGroupId(req: Request, res: Response, next: NextFunction) {
-    const validation = this.groupIdSchema.validate(req.params);
 
     if (validation.error && validation.error.isJoi) {
       res.status(400).json(validation.error.details[0]);
