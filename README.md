@@ -9,6 +9,7 @@ To load postman API calls please use one of below
 
 Following are the exposed API's : -
 
+```
 1) CREATE USER
 method: POST
 url: http://localhost:3000/users
@@ -98,6 +99,7 @@ body:
 14) User Group Mappings - DEV PURPOSE ONLY
 method: GET
 url: http://localhost:3000/userGroup/
+```
 
 
 HOME TASK 3
