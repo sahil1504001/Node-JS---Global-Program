@@ -40,9 +40,15 @@ export class UserService {
     });
   }
 
-  deleteUser(id: string) {
+  softDeleteUser(id: string) {
     return User.update({isDeleted: true}, {
       where: { id, isDeleted: false }
+    });
+  }
+
+  deleteUser(id: string) {
+    return User.destroy({
+      where: { id }
     });
   }
 

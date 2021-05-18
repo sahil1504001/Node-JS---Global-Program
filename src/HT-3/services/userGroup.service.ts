@@ -1,28 +1,41 @@
-import { UserGroups } from '../models/UserGroups.model';
+import { AbstractDataTypeConstructor, Error, UUIDV4 } from "sequelize";
+import { DbConfig } from "../data-access/db.service";
+import { Group } from "../models/Group.model";
+import { User } from "../models/User.model";
+import { UserGroup } from "../models/UserGroup.model";
 
 export class UserGroupService {
 
-  addUserToGroup(userId: any, groupId: any) {
-    return UserGroups.create({groupId, userId})
-    .catch((error: any) => {
-      if (error.name === 'SequelizeUniqueConstraintError') {
-        return { name: error.name, message: 'User is alrady associated with the group' }
-      } else if (error.name === 'SequelizeForeignKeyConstraintError') {
-        if (error.index === "UserGroups_userId_fkey") {
-          return { name: error.name, message: `User with id ${userId} not present` }
+  addUsersToGroup(GroupId: string, userIds: Array<string>): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      const transaction = await DbConfig.db.transaction();
+      const userGroupPayload: Array<{ UserId: string, GroupId: string, id: any }> = [];
+      
+      try {
+        userIds.forEach(_ => userGroupPayload.push({ UserId: _, GroupId, id: UUIDV4 }));
+
+        const response = await UserGroup.bulkCreate(userGroupPayload);
+        await transaction.commit();
+
+        resolve({ message: `Users added to Group successfully`, response });
+      } catch (error) {
+        transaction.rollback();
+        const errors = [];
+        if (Array.isArray(error?.errors)) {
+          error?.errors?.forEach((_: any) => errors.push(_.message));
+        } else {
+          errors.push(error.message);
         }
-        if (error.index === "UserGroups_groupId_fkey") {
-          return { name: error.name, message: `Group ${groupId} is not present` }
-        }
-      } else {
-        return error;
+        reject({ message: `Unable to add users to group`, errors });
       }
     });
   }
 
-  removeUserFromroup(userId: any, groupId: any) {
-    return UserGroups.destroy({
-      where: {groupId, userId}
-    });
+  getAllMappings() {
+    return UserGroup.findAll();
+    // UserGroup.drop();
+    // User.drop();
+    // Group.drop();
+    // return User.drop();
   }
 }

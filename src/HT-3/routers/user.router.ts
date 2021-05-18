@@ -1,6 +1,6 @@
 import express from 'express';
 import { UserValidator } from "../services/userValidator.service";
-import { UserController } from './controllers/user.controller';
+import { UserController } from '../controllers/user.controller';
 
 const uv = new UserValidator();
 const uc = new UserController();
@@ -15,7 +15,5 @@ userRouter.get('', uc.getActiveUsers.bind(uc))
     uv.validateUserId.bind(uv),
     uv.validateUserRequestPayload.bind(uv)
   ],uc.updateUser.bind(uc))
-  .put('/:id/addgroup', [
-    uv.validateUserId.bind(uv)
-  ],uc.addUserGroup.bind(uc))
-  .delete('/:id', uv.validateUserId.bind(uv), uc.deleteUser.bind(uc));
+  .delete('/delete/:id', uv.validateUserId.bind(uv), uc.deleteUser.bind(uc))
+  .delete('/:id', uv.validateUserId.bind(uv), uc.softDeleteUser.bind(uc));

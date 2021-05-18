@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { ValidationError } from 'sequelize';
-import { UserService } from "../../services/user.service";
-import { UserGroupService } from '../../services/userGroup.service';
+import { UserService } from "../services/user.service";
 
 enum RESPONSE_CODES {
   BAD_REQUEST = 400,
@@ -11,7 +10,6 @@ enum RESPONSE_CODES {
 
 export class UserController {
   private readonly userService = new UserService();
-  private readonly userGroupService = new UserGroupService();
 
   getActiveUsers(req: Request, res: Response) {
     this.userService.getActiveUsers()
@@ -62,14 +60,8 @@ export class UserController {
     }));
   }
 
-  addUserGroup(req: Request, res: Response) {
-    this.userGroupService.addUserToGroup(req.params.id, req.body.groupId)
-    .then(response => res.json(response))
-    .catch((err: ValidationError) => res.status(400).json(err));
-  }
-
-  deleteUser(req: Request, res: Response) {
-    this.userService.deleteUser(req.params.id)
+  softDeleteUser(req: Request, res: Response) {
+    this.userService.softDeleteUser(req.params.id)
     .then((response) => {
       if (response[0] > 0) {
         res.json({
@@ -82,5 +74,13 @@ export class UserController {
     .catch(() => res.status(400).json({
       message: `Error deleting ${req.params.id}`
     }));
+  }
+
+  deleteUser(req: Request, res: Response) {
+    this.userService.deleteUser(req.params.id)
+      .then(() => res.status(200).json({ message: `${req.params.id} deleted successfully` }))
+      .catch(() => res.status(400).json({
+        message: `Error deleting ${req.params.id}`
+      }));
   }
 }
