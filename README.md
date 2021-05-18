@@ -7,6 +7,99 @@ To load postman API calls please use one of below
 2) Use this file 'src/HT-3/GMP - Task 4.postman_collection.json' and do import in postman
 3) do: npm run hometask4
 
+Following are the exposed API's : -
+
+1) CREATE USER
+method: POST
+url: http://localhost:3000/users
+body: 
+{
+    "login": "SahilShikalgarGroupTest1",
+    "password": "01x0qqzsp6rz",
+    "age": 22
+}
+
+2) GET USERS ALL
+method: GET
+url: http://localhost:3000/users/
+
+3) GET USER BY ID
+method: GET
+url: http://localhost:3000/users/<id>
+
+4) GET USERS - getAutoSuggestUsers
+method: GET
+url: http://localhost:3000/users/suggest?search=<query>&limit=<number>
+example: http://localhost:3000/users/suggest?search=Alexandre&limit=2
+
+5) UPDATE USER
+method: PUT
+url: http://localhost:3000/users/<id>
+example: http://localhost:3000/users/c1e598fa-0767-4fc4-bd02-120b6c336792
+body:
+{
+    "login": "AlexDoe",
+    "password": "123555678",
+    "age": 22
+}
+
+6) DELETE USER
+method: DELETE
+url: http://localhost:3000/users/delete/<id>
+example: http://localhost:3000/users/delete/52956faa-81bc-4cd9-b2ae-7dc97b6dbff1
+
+7) SOFT DELETE USER
+method: DELETE
+url: http://localhost:3000/users/<id>
+example: http://localhost:3000/users/e02b4177-98a3-4fe7-878a-71077d7462fb
+
+8) CREATE GROUP
+method: POST
+url: http://localhost:3000/groups/
+body:
+{
+    "name": "GroupTesting",
+    "permissions": ["READ"]
+}
+
+9) GET GROUP BY ID
+method: GET
+url: http://localhost:3000/groups/<id>
+example: http://localhost:3000/groups/8b07da0c-de2d-4cdb-bab8-95075a784a55
+
+10) GET GROUPS ALL
+method: GGET
+url: http://localhost:3000/groups/
+
+11) UPDATE GROUP
+method: PUT
+url: http://localhost:3000/groups/<id>
+example: http://localhost:3000/groups/923caa45-87e4-4573-833b-d06e04f9cdab
+body:
+{
+    "name": "DummyNameUpdated",
+    "permissions": ["READ", "WRITE", "SHARE"]
+}
+
+12) DELETE GROUP
+method: DELETE
+url: http://localhost:3000/groups/<id>
+example: http://localhost:3000/groups/255ae725-eda7-4f9c-a59c-d8ef5b319948
+
+13) ADD USERS TO GROUP
+method: POST
+url: http://localhost:3000/userGroup/addUsersToGroup
+body:
+{
+    "groupId": "64ccc77e-4176-4acc-b338-c0805e079d4b",
+    "userIds": ["52956faa-81bc-4cd9-b2ae-7dc97b6dbff1", "ff6ca395-271d-4ba8-ba11-958492a8a181"]
+}
+
+14) User Group Mappings - DEV PURPOSE ONLY
+method: GET
+url: http://localhost:3000/userGroup/
+
+
 HOME TASK 3
 
 To load postman API calls please use one of below
