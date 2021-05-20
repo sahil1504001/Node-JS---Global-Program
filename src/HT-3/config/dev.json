@@ -1,0 +1,10 @@
+{
+  "db": {
+      "host": "john.db.elephantsql.com",
+      "port": 5432,
+      "username": "lteqcknj",
+      "password": "vQvM9JfkXhXmMcvhq4-qfsMQMNTZfjeW",
+      "database": "lteqcknj",
+      "dialect": "postgres"
+  }
+}

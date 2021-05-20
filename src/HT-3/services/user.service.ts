@@ -1,4 +1,5 @@
 import { User } from '../models/User.model';
+import { Group } from '../models/Group.model';
 import { Op } from 'sequelize';
 
 export class UserService {
@@ -17,7 +18,6 @@ export class UserService {
   }
 
   updateUser(id: string, data: any) {
-    console.log(id, data);
     return User.update(data, {
       where: {id, isDeleted: false},
       returning: true
@@ -26,14 +26,29 @@ export class UserService {
 
   findUser(id: string): Promise<any> {
     return User.findOne({
+      include: {
+        model: Group,
+        as: 'groups',
+        required: false,
+        attributes: ['id', 'name', 'permissions'],
+        through: {
+          attributes: []
+        }
+      },
       where: { id, isDeleted: false },
       attributes: ['id', 'login', 'age'],
     });
   }
 
-  deleteUser(id: string) {
+  softDeleteUser(id: string) {
     return User.update({isDeleted: true}, {
       where: { id, isDeleted: false }
+    });
+  }
+
+  deleteUser(id: string) {
+    return User.destroy({
+      where: { id }
     });
   }
 

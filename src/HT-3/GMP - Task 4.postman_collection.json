@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "268e43ea-f609-4c7a-8f4c-bdf2273d2a7d",
+		"name": "GMP - Task 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"SahilShikalgarGroupTest1\",\r\n    \"password\": \"01x0qqzsp6rz\",\r\n    \"age\": 22\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USERS ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/1202f6e7-1f12-4d37-b461-b67729d33301",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1202f6e7-1f12-4d37-b461-b67729d33301"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USERS - getAutoSuggestUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/suggest?search=Alexandre&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"suggest"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Alexandre"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USER",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"AlexDoe\",\r\n    \"password\": \"123555678\",\r\n    \"age\": 22\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/c1e598fa-0767-4fc4-bd02-120b6c336792",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"c1e598fa-0767-4fc4-bd02-120b6c336792"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/delete/52956faa-81bc-4cd9-b2ae-7dc97b6dbff1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"delete",
+						"52956faa-81bc-4cd9-b2ae-7dc97b6dbff1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOFT DELETE USER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/users/e02b4177-98a3-4fe7-878a-71077d7462fb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"e02b4177-98a3-4fe7-878a-71077d7462fb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE GROUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"GroupTesting\",\r\n    \"permissions\": [\"READ\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET GROUPS BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/groups/8b07da0c-de2d-4cdb-bab8-95075a784a55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"8b07da0c-de2d-4cdb-bab8-95075a784a55"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET GROUPS ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/groups/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE GROUP",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"DummyNameUpdated\",\r\n    \"permissions\": [\"READ\", \"WRITE\", \"SHARE\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/923caa45-87e4-4573-833b-d06e04f9cdab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"923caa45-87e4-4573-833b-d06e04f9cdab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELTE GROUP",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/groups/255ae725-eda7-4f9c-a59c-d8ef5b319948",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"groups",
+						"255ae725-eda7-4f9c-a59c-d8ef5b319948"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD USERS TO GROUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"groupId\": \"64ccc77e-4176-4acc-b338-c0805e079d4b\",\r\n    \"userIds\": [\"52956faa-81bc-4cd9-b2ae-7dc97b6dbff1\", \"ff6ca395-271d-4ba8-ba11-958492a8a181\"]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/userGroup/addUsersToGroup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userGroup",
+						"addUsersToGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Group Mappings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/userGroup/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userGroup",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

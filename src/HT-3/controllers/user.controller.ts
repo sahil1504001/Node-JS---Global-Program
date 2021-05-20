@@ -33,7 +33,9 @@ export class UserController {
           res.sendStatus(RESPONSE_CODES.NOT_FOUND);
         }
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => { 
+        console.log(err); res.status(400).json(err)
+      });
   }
 
   createUser(req: Request, res: Response) {
@@ -58,8 +60,8 @@ export class UserController {
     }));
   }
 
-  deleteUser(req: Request, res: Response) {
-    this.userService.deleteUser(req.params.id)
+  softDeleteUser(req: Request, res: Response) {
+    this.userService.softDeleteUser(req.params.id)
     .then((response) => {
       if (response[0] > 0) {
         res.json({
@@ -72,5 +74,13 @@ export class UserController {
     .catch(() => res.status(400).json({
       message: `Error deleting ${req.params.id}`
     }));
+  }
+
+  deleteUser(req: Request, res: Response) {
+    this.userService.deleteUser(req.params.id)
+      .then(() => res.status(200).json({ message: `${req.params.id} deleted successfully` }))
+      .catch(() => res.status(400).json({
+        message: `Error deleting ${req.params.id}`
+      }));
   }
 }
