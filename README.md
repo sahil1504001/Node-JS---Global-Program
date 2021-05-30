@@ -1,5 +1,13 @@
 # Node-JS---Global-Program
 
+HOME TASK 6 - JWT authorization and CORS
+To load postman API calls please use one of below
+1) https://www.getpostman.com/collections/db2a8bc74dc5b1eaa53e
+2) Use this file 'src/HT-3/GMP - Task 6.postman_collection.json' and do import in postman
+3) do: npm run hometask6
+4) If user triggers /users/login then it will create accessToken and save it inside collection storage of POSTMAN.
+5) When we call any other API call then it will take accessToken from POSTMAN collection.
+
 HOME TASK 5 - Logging and error handling
 To load postman API calls please use one of below
 1) https://www.getpostman.com/collections/db2a8bc74dc5b1eaa53e

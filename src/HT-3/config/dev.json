@@ -6,5 +6,9 @@
       "password": "vQvM9JfkXhXmMcvhq4-qfsMQMNTZfjeW",
       "database": "lteqcknj",
       "dialect": "postgres"
+  },
+  "token": {
+    "tokenLife": 120,
+    "secret": "02938t9023uf0923j09j9gj3s98og3489gh7938hg982hj0f9jw9sgjesu89iguio3ji9gj2309j0ghjeuisghkjdfgnm3v4mntvjhiocvubiouxc0b9u3490jg"
   }
 }

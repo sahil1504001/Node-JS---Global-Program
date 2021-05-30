@@ -6,6 +6,7 @@ import { userGroupRouter } from './routers/user-group.router';
 import morgan from 'morgan';
 import { CustomLogger } from './logger/custom-logger';
 import { unhandledRejectionHandler, unhandledErrorHandler } from './handlers/handlers';
+import { checkToken } from './token-manager/tokenManager';
 
 const app: Application = express();
 const PORT = process.env.port || 3000;
@@ -19,6 +20,7 @@ DbConfig.initDb();
 
 app.use(express.json());
 app.set('x-powered-by', false);
+app.use(checkToken);
 
 app.use('/users', userRouter);
 app.use('/groups', groupRouter);

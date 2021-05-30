@@ -13,6 +13,7 @@
     "hometask3": "nodemon src/HT-3/app.ts",
     "hometask4": "nodemon src/HT-3/app.ts",
     "hometask5": "nodemon src/HT-3/app.ts",
+    "hometask6": "nodemon src/HT-3/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "^14.14.41",
     "@types/uuid": "^8.3.0",
     "babel-cli": "^6.26.0",
@@ -54,6 +56,7 @@
     "csvtojson": "^2.0.10",
     "express": "^4.17.1",
     "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",

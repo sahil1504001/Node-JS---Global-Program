@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import { number, object, string } from "joi";
 
-export class UserValidator {
+export class UserValidator {  
+  private readonly loginPayload = object({
+    username: string().required().alphanum().min(5).max(100),
+    password: string().required().alphanum().min(8).max(255)
+  });
+
   private readonly userSchema = object({
     login: string().required().alphanum().min(5).max(100),
     password: string().required().alphanum().min(8).max(255),
@@ -44,6 +49,16 @@ export class UserValidator {
 
   validateSuggestQueryParams(req: Request, res: Response, next: NextFunction) {
     const validation = this.suggestQuerySchema.validate(req.query);
+
+    if (validation.error && validation.error.isJoi) {
+      res.status(400).json(validation.error.details[0]);
+    } else {
+      next();
+    }
+  }
+
+  validateLoginPayload(req: Request, res: Response, next: NextFunction) {
+    const validation = this.loginPayload.validate(req.body);
 
     if (validation.error && validation.error.isJoi) {
       res.status(400).json(validation.error.details[0]);
