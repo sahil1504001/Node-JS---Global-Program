@@ -53,7 +53,7 @@ export class UserController {
       .catch((err) => {
         const resp = `Failed to find user - ${JSON.stringify(err)}`;
         this.logger.error({message: resp, method: 'UserController -> findUser', requestParams: JSON.stringify(req.params)});
-        console.log(err); res.status(400).json(resp);
+        res.status(400).json(resp);
       });
   }
 
