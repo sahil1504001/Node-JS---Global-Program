@@ -13,6 +13,13 @@ export class UserController {
   private readonly userService = new UserService();
   private readonly logger = CustomLogger.logger;
 
+  login(req: Request, res: Response) {
+    const { username, password } = req.body;
+    this.userService.login(username, password)
+    .then(response => res.json(response))
+    .catch(err => res.status(RESPONSE_CODES.BAD_REQUEST).json(err));
+  }
+
   getActiveUsers(req: Request, res: Response) {
     this.userService.getActiveUsers()
       .then(response => res.json(response))
