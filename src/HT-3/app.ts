@@ -1,3 +1,4 @@
+require('dotenv').config();
 import express, { Application  } from 'express';
 import { userRouter } from './routers/user.router';
 import { groupRouter } from './routers/group.router';
